@@ -1,12 +1,7 @@
 import org.openrndr.application
 import org.openrndr.color.ColorRGBa
-import org.openrndr.draw.loadFont
-import org.openrndr.draw.loadImage
-import org.openrndr.draw.tint
 import org.openrndr.extensions.Screenshots
 import org.openrndr.math.IntVector2
-import kotlin.math.cos
-import kotlin.math.sin
 
 fun main() = application {
     configure {
@@ -23,6 +18,8 @@ fun main() = application {
         extend(Screenshots()) {
             contentScale = 4.0
         }
+
+//        Circles
         extend {
 //            -- Drawing code goes here
             drawer.clear(ColorRGBa.PINK)
@@ -45,5 +42,7 @@ fun main() = application {
             drawer.strokeWeight = 1.0
             drawer.circle(width/6.0 + 2 * width/3.0, height/2.0, width/8.0)
         }
+
+
     }
 }
