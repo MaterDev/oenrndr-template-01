@@ -3,29 +3,47 @@ import org.openrndr.color.ColorRGBa
 import org.openrndr.draw.loadFont
 import org.openrndr.draw.loadImage
 import org.openrndr.draw.tint
+import org.openrndr.extensions.Screenshots
+import org.openrndr.math.IntVector2
 import kotlin.math.cos
 import kotlin.math.sin
 
 fun main() = application {
     configure {
-        width = 768
-        height = 576
+//        Settings go here
+        width = 640
+        height = 480
+        windowResizable = true
+        position = IntVector2(100,400)
+        title = "OPENRNDR Example"
     }
 
     program {
-        val image = loadImage("data/images/pm5544.png")
-        val font = loadFont("data/fonts/default.otf", 64.0)
-
+//         -- One time set up code goes here
+        extend(Screenshots()) {
+            contentScale = 4.0
+        }
         extend {
-            drawer.drawStyle.colorMatrix = tint(ColorRGBa.WHITE.shade(0.2))
-            drawer.image(image)
+//            -- Drawing code goes here
+            drawer.clear(ColorRGBa.PINK)
 
-            drawer.fill = ColorRGBa.PINK
-            drawer.circle(cos(seconds) * width / 2.0 + width / 2.0, sin(0.5 * seconds) * height / 2.0 + height / 2.0, 140.0)
-
-            drawer.fontMap = font
+            // -- draw circle with white fill and black stroke
             drawer.fill = ColorRGBa.WHITE
-            drawer.text("OPENRNDR", width / 2.0, height / 2.0)
+            drawer.stroke = ColorRGBa.BLACK
+            drawer.strokeWeight = 1.0
+            drawer.circle(width / 6.0, height / 2.0, width / 8.0)
+
+            // -- draw circle without fill, but with black stroke
+            drawer.fill = null
+            drawer.stroke = ColorRGBa.BLACK
+            drawer.strokeWeight = 1.0
+            drawer.circle(width/6.0 + width/3.0, height/2.0, width/9.0)
+
+            // -- draw circle with white fill, but without stroke
+            drawer.fill = ColorRGBa.WHITE
+            drawer.stroke = null
+            drawer.strokeWeight = 1.0
+            drawer.circle(width/6.0 + 2 * width/3.0, height/2.0, width/8.0)
         }
     }
 }
