@@ -2,7 +2,6 @@ import org.openrndr.application
 import org.openrndr.color.ColorRGBa
 import org.openrndr.extensions.Screenshots
 import org.openrndr.extra.color.presets.LIGHT_SEA_GREEN
-import org.openrndr.extra.olive.oliveProgram
 
 fun main() = application {
     configure {
@@ -15,7 +14,7 @@ fun main() = application {
 //      OPENRNDR primarily uses red-green-blue(-alpha) color stored in ColorRGBa instances.
 //      ColorRGBa’s channels store values in the range [0, 1].
 
-    oliveProgram {
+    program {
 //         -- One time set up code goes here
         extend(Screenshots()) {
             contentScale = 4.0
