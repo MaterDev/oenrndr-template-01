@@ -22,6 +22,7 @@ fun main() = application {
             contentScale = 4.0
         }
 
+        // If you wanted to take the current drawStyle and preserver it in a variable:
         val active = drawer.drawStyle.copy()
 
         extend {
